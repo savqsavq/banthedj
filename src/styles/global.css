@@ -1,0 +1,258 @@
+/* ===========================
+   BANTHEDJ — global.css
+   =========================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital@0;1&display=swap');
+
+:root {
+  --black: #000;
+  --off-black: #0a0a0a;
+  --blue: #0040ff;
+  --blue-dim: rgba(0, 64, 255, 0.15);
+  --white: #fff;
+  --grey: #888;
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body: 'Space Mono', monospace;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+/* ===========================
+   HERO
+   =========================== */
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  min-height: 500px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.banner-wrap {
+  position: absolute;
+  inset: 0;
+}
+
+.banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.banner-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.85) 100%);
+}
+
+.hero-title-wrap {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 0 0.08em 0.04em;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 18vw, 18rem);
+  line-height: 0.9;
+  letter-spacing: -0.01em;
+  color: var(--white);
+  mix-blend-mode: screen;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===========================
+   RELEASE
+   =========================== */
+
+.release {
+  background: var(--off-black);
+  border-top: 1px solid #1a1a1a;
+}
+
+.release-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 80px 24px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.release-label {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  color: var(--blue);
+  text-transform: uppercase;
+}
+
+.release-track {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 10vw, 8rem);
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+}
+
+.release-date {
+  font-size: 0.8rem;
+  color: var(--grey);
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.accent {
+  color: var(--white);
+}
+
+.embed-wrap {
+  margin-top: 24px;
+  border: 1px solid #222;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.embed-wrap iframe {
+  display: block;
+  background: #111;
+}
+
+/* ===========================
+   LINKS
+   =========================== */
+
+.links {
+  background: var(--black);
+  border-top: 1px solid #111;
+}
+
+.links-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 60px 24px 80px;
+}
+
+.social-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 22px 0;
+  border-bottom: 1px solid #111;
+  color: var(--white);
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  letter-spacing: 0.05em;
+  transition: color 0.15s ease, padding-left 0.2s ease;
+  position: relative;
+}
+
+.social-link:first-child {
+  border-top: 1px solid #111;
+}
+
+.social-link svg {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  opacity: 0.5;
+  transition: opacity 0.15s ease;
+}
+
+.social-link:hover {
+  color: var(--blue);
+  padding-left: 12px;
+}
+
+.social-link:hover svg {
+  opacity: 1;
+}
+
+.soon {
+  font-size: 0.55em;
+  color: var(--blue);
+  letter-spacing: 0.15em;
+  margin-left: 8px;
+  opacity: 0.9;
+}
+
+/* ===========================
+   FOOTER
+   =========================== */
+
+footer {
+  background: var(--off-black);
+  border-top: 1px solid #111;
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--grey);
+}
+
+footer a {
+  color: var(--grey);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+footer a:hover {
+  color: var(--white);
+}
+
+/* ===========================
+   RESPONSIVE
+   =========================== */
+
+@media (max-width: 600px) {
+  .release-inner,
+  .links-inner {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  footer {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+}
