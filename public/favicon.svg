@@ -2,7 +2,6 @@
   <rect width="32" height="32" rx="3" fill="#0a0a0a"/>
   <g transform="rotate(-28, 16, 16)">
     <rect x="-4" y="10" width="40" height="13" fill="white"/>
-    <text x="16" y="21" font-family="Arial Black, sans-serif" font-weight="900" font-size="9" fill="#0a0a0a" text-anchor="middle" letter-spacing="0.5">BAN</text>
   </g>
   <g transform="rotate(28, 16, 16)">
     <rect x="-4" y="10" width="40" height="13" fill="#0040ff" opacity="0.55"/>
