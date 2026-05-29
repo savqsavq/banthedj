@@ -243,18 +243,35 @@ footer a:hover {
    RESPONSIVE
    =========================== */
 
+.hyperfollow-btn {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 10px 24px;
+  border: 1px solid var(--blue);
+  color: var(--blue);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background 0.15s, color 0.15s;
+}
+
+.hyperfollow-btn:hover {
+  background: var(--blue);
+  color: var(--white);
+}
+
 @media (max-width: 600px) {
   .hero {
     height: 50svh;
     min-height: 300px;
   }
-
   .release-inner,
   .links-inner {
     padding-left: 20px;
     padding-right: 20px;
   }
-
   footer {
     flex-direction: column;
     gap: 8px;
