@@ -1,6 +1,6 @@
 # BANTHEDJ
 
-Astro site for `banthedj.com`, deployed on Cloudflare Workers.
+Astro site for `banthedj.com`, deployed by GitHub Pages.
 
 ## Local Development
 
@@ -15,34 +15,28 @@ npm run dev
 npm run build
 ```
 
+GitHub Actions deploys `dist` to Pages on pushes to `main`.
+
 ## Free Email Capture Setup
 
-The signup form posts to `/api/subscribe`. It expects a Cloudflare D1 binding named `DB`.
+GitHub Pages is static, so the signup form cannot store emails by itself. The form is present, but it currently shows:
 
-Create the free D1 database:
+```text
+Signal backend coming soon.
+```
+
+When ready, create a separate free Cloudflare Worker + D1 database and set the form's `data-endpoint` in `src/pages/index.astro` to that Worker URL.
+
+Create the D1 database:
 
 ```sh
 npx wrangler d1 create banthedj_signals
 ```
 
-Copy the returned `database_id` into `wrangler.jsonc` by uncommenting the `d1_databases` block.
-
 Apply the schema:
 
 ```sh
 npx wrangler d1 migrations apply banthedj_signals --remote
-```
-
-Deploy:
-
-```sh
-npm run deploy
-```
-
-Until the D1 binding is configured, the form UI will load but submissions will return:
-
-```text
-Signal storage is not configured yet.
 ```
 
 ## Notes

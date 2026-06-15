@@ -137,7 +137,7 @@ const soundcloudEmbed = 'https://w.soundcloud.com/player/?url=https%3A//soundclo
           Unreleased presets, production notes, early drops, and occasional transmissions from BANTHEDJ.
         </p>
 
-        <form class="signal-form" id="signalForm">
+        <form class="signal-form" id="signalForm" data-endpoint="">
           <label class="visually-hidden" for="email">Email</label>
           <input id="email" name="email" type="email" placeholder="email address" autocomplete="email" required />
 
@@ -265,13 +265,19 @@ const soundcloudEmbed = 'https://w.soundcloud.com/player/?url=https%3A//soundclo
       signalForm?.addEventListener('submit', async (event) => {
         event.preventDefault();
         if (!(signalForm instanceof HTMLFormElement)) return;
+        const endpoint = signalForm.dataset.endpoint || '';
+        if (!endpoint) {
+          if (formStatus) formStatus.textContent = 'Signal backend coming soon.';
+          return;
+        }
+
         if (formStatus) formStatus.textContent = 'Sending...';
 
         const formData = new FormData(signalForm);
         const payload = Object.fromEntries(formData.entries());
 
         try {
-          const response = await fetch('/api/subscribe', {
+          const response = await fetch(endpoint, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload),
