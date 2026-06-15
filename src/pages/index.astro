@@ -1,13 +1,10 @@
 ---
 import '../styles/global.css';
 
-const socials = [
-  { name: 'SoundCloud', url: 'https://soundcloud.com/banthedj', icon: 'sc' },
-  { name: 'Spotify', url: 'https://open.spotify.com/artist/3uiGjuOe1pf7gEXg27Ndqw', icon: 'sp' },
-  { name: 'YouTube', url: 'https://youtube.com/@banthedj', icon: 'yt' },
-  { name: 'Instagram', url: 'https://instagram.com/banthedj', icon: 'ig' },
-  { name: 'TikTok', url: 'https://tiktok.com/@banthedj', icon: 'tt' },
-];
+const releaseDateIso = '2026-06-19T00:00:00-05:00';
+const presaveUrl = 'https://distrokid.com/hyperfollow/banthedj/overflow';
+const streamUrl = 'https://distrokid.com/hyperfollow/banthedj/overflow';
+const soundcloudEmbed = 'https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/banthedj/overflow&color=%230040ff&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false';
 ---
 
 <html lang="en">
@@ -17,13 +14,13 @@ const socials = [
     <title>BANTHEDJ</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta property="og:title" content="BANTHEDJ" />
-    <meta property="og:description" content="Dubstep. Bass Music. Overflow — out June 19." />
+    <meta property="og:description" content="Dubstep. Bass Music. Overflow." />
     <meta property="og:image" content="/images/og-image.jpg" />
     <meta property="og:url" content="https://banthedj.com" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="BANTHEDJ" />
-    <meta name="twitter:description" content="Dubstep. Bass Music. Overflow — out June 19." />
+    <meta name="twitter:description" content="Dubstep. Bass Music. Overflow." />
     <meta name="twitter:image" content="/images/banner_ban.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -32,23 +29,47 @@ const socials = [
   <body>
 
     <!-- HERO -->
-    <section class="hero">
+    <section class="hero" id="top">
       <div class="banner-wrap">
         <img src="/images/banner_ban.jpg" alt="BANTHEDJ banner" class="banner-img" />
         <div class="banner-overlay"></div>
       </div>
-      <div class="hero-title-wrap">
-        <h1 class="hero-title">BANTHEDJ</h1>
+      <div class="hero-epk">
+        <div class="hero-copy">
+          <div class="section-kicker">EPK</div>
+          <h1 class="hero-title">BANTHEDJ EPK</h1>
+          <p>
+            140 / deep dubstep. Sub-bass-forward pressure, negative space, and clean dirty sound design for club systems.
+          </p>
+        </div>
+
+        <div class="hero-player">
+          <div class="player-label">Listen first</div>
+          <iframe
+            width="100%"
+            height="166"
+            scrolling="no"
+            frameborder="no"
+            allow="autoplay"
+            src={soundcloudEmbed}>
+          </iframe>
+          <a href="mailto:banthedj@gmail.com?subject=Booking%20BANTHEDJ" class="book-btn">Book banthedj</a>
+        </div>
       </div>
     </section>
 
     <!-- RELEASE -->
-    <section class="release">
+    <section class="release" data-release-date={releaseDateIso} data-presave-url={presaveUrl} data-stream-url={streamUrl}>
       <div class="release-inner">
-        <div class="release-label">NEW SINGLE</div>
+        <div class="release-label" id="releaseState">NEW SINGLE</div>
         <div class="release-track">OVERFLOW</div>
-        <div class="release-date">Available everywhere · <span class="accent">June 19</span></div>
-        <a href="https://distrokid.com/hyperfollow/banthedj/overflow" target="_blank" class="hyperfollow-btn">Pre-save Overflow →</a>
+        <div class="release-date" id="releaseCopy">Available everywhere · <span class="accent">June 19</span></div>
+        <div class="countdown" id="countdown" aria-live="polite">
+          <span><strong id="countDays">--</strong> days</span>
+          <span><strong id="countHours">--</strong> hours</span>
+          <span><strong id="countMinutes">--</strong> min</span>
+        </div>
+        <a href={presaveUrl} target="_blank" rel="noreferrer" class="hyperfollow-btn" id="releaseButton">Pre-save Overflow -></a>
 
         <div class="embed-wrap">
           <iframe
@@ -57,37 +78,125 @@ const socials = [
             scrolling="no"
             frameborder="no"
             allow="autoplay"
-            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/banthedj/overflow&color=%230040ff&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false">
+            src={soundcloudEmbed}>
           </iframe>
         </div>
+      </div>
+    </section>
+
+    <!-- EPK -->
+    <section class="epk" id="epk">
+      <div class="epk-inner">
+        <div class="section-kicker">BIO</div>
+        <div class="bio-block">
+          <p>
+            By day, a data engineer filtering out noise. By night, banthedj creates physical, sub-bass-forward acoustic environments in the 140/deep dubstep space. Rooted in psychoacoustics and a clean dirty production philosophy, banthedj strips away the excess to deliver heavy, visceral tension designed for the club system. Debut single Overflow out June 19, 2026.
+          </p>
+        </div>
+
+        <div class="press-grid">
+          <figure>
+            <img src="/images/current_press.png" alt="BANTHEDJ current press image" />
+            <figcaption>Current press image</figcaption>
+          </figure>
+          <figure>
+            <img src="/images/artist_photo.jpeg" alt="BANTHEDJ studio artist photo" />
+            <figcaption>Studio photo</figcaption>
+          </figure>
+        </div>
+
+        <div class="epk-panels">
+          <div class="rider-panel">
+            <div class="section-kicker">TECH RIDER</div>
+            <ul>
+              <li>2x Pioneer CDJ-3000s, CDJ-2000NXS2s, or equivalent club media players.</li>
+              <li>1x Pioneer DJM-A9, DJM-900NXS2, or Xone:96 mixer.</li>
+              <li>2x dedicated booth monitors with independent booth volume control.</li>
+              <li>USB-ready setup, stable booth power, and direct stage manager / sound engineer contact.</li>
+            </ul>
+          </div>
+
+          <div class="contact-panel">
+            <div class="section-kicker">BOOKING</div>
+            <a href="mailto:banthedj@gmail.com?subject=Booking%20BANTHEDJ" class="book-btn">Book banthedj</a>
+            <a href="/images/current_press.png" target="_blank" rel="noreferrer" class="secondary-link">Open current press image</a>
+            <a href="/images/artist_photo.jpeg" target="_blank" rel="noreferrer" class="secondary-link">Open studio photo</a>
+            <button type="button" class="secondary-link print-button" id="printEpk">Download / print EPK as PDF</button>
+            <p>High-res press ZIP and logo pack are in progress.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SIGNAL -->
+    <section class="signal" id="signal">
+      <div class="signal-inner">
+        <div class="section-kicker">PRIVATE LIST</div>
+        <h2>JOIN THE SIGNAL</h2>
+        <p class="signal-copy">
+          Unreleased presets, production notes, early drops, and occasional transmissions from BANTHEDJ.
+        </p>
+
+        <form class="signal-form" id="signalForm">
+          <label class="visually-hidden" for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="email address" autocomplete="email" required />
+
+          <label class="visually-hidden" for="interest">Interest</label>
+          <select id="interest" name="interest" aria-label="What should I send you?">
+            <option value="serum-presets">Serum presets</option>
+            <option value="unreleased-drops">Unreleased drops</option>
+            <option value="production-notes">Production notes</option>
+            <option value="shows">Show announcements</option>
+          </select>
+
+          <label class="visually-hidden" for="message">Message</label>
+          <textarea id="message" name="message" rows="3" placeholder="drop a signal"></textarea>
+
+          <label class="website-field" for="website">Website</label>
+          <input class="website-field" id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
+
+          <button type="submit">Join the Signal</button>
+          <p class="form-status" id="formStatus" role="status"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- NOTEBOOK -->
+    <section class="notebook">
+      <div class="notebook-inner">
+        <div class="section-kicker">NOTEBOOK</div>
+        <p>
+          Clean dirty. Controlled damage. Bass music built like a system, then pushed until the edges start talking.
+        </p>
       </div>
     </section>
 
     <!-- LINKS -->
     <section class="links">
       <div class="links-inner">
+        <div class="section-kicker">ELSEWHERE</div>
         <nav class="social-grid">
-          <a href="https://soundcloud.com/banthedj/overflow" target="_blank" class="social-link" aria-label="SoundCloud">
+          <a href="https://soundcloud.com/banthedj/overflow" target="_blank" rel="noreferrer" class="social-link" aria-label="SoundCloud">
             <!-- SoundCloud -->
             <svg viewBox="0 0 32 32" fill="currentColor"><path d="M1.4 19.3c0 2.1 1.7 3.7 3.7 3.7s3.7-1.7 3.7-3.7V12c-.9-.5-1.9-.8-3-.8-2.7 0-4.9 2-5.3 4.6-.1.5-.1.9-.1.8 0 .9 0 1.8.5 2.7zm6.8 0V12c.8.3 1.5.8 2.1 1.5v5.8h-2.1zm3.7 0V14c.5.9.8 1.9.8 3v2.3h-.8zm2.4 0v-2.3c0-3.7 3-6.7 6.7-6.7 1 0 2 .2 2.9.6V23h-16v-.7h6.4zm10.3-8.8c-.4-.1-.8-.2-1.2-.2-3.3 0-6 2.7-6 6v2.3h8.2V12c-.3-.2-.7-.3-1-.5z"/></svg>
             SoundCloud
           </a>
-          <a href="https://open.spotify.com" target="_blank" class="social-link" aria-label="Spotify">
+          <a href="https://open.spotify.com/artist/3uiGjuOe1pf7gEXg27Ndqw" target="_blank" rel="noreferrer" class="social-link" aria-label="Spotify">
             <!-- Spotify -->
             <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 2C8.3 2 2 8.3 2 16s6.3 14 14 14 14-6.3 14-14S23.7 2 16 2zm6.4 20.2c-.3.4-.8.6-1.3.3-3.5-2.1-7.9-2.6-13.1-1.4-.5.1-1-.2-1.1-.7-.1-.5.2-1 .7-1.1 5.7-1.3 10.5-.7 14.5 1.6.4.3.6.8.3 1.3zm1.7-3.8c-.3.5-1 .6-1.5.3-4-2.4-10.1-3.1-14.8-1.7-.6.2-1.2-.2-1.4-.7-.2-.6.2-1.2.7-1.4 5.4-1.6 12.1-.8 16.7 1.9.5.3.7 1 .3 1.6zm.1-3.9c-4.8-2.8-12.7-3.1-17.3-1.7-.7.2-1.4-.2-1.6-.9-.2-.7.2-1.4.9-1.6 5.2-1.6 13.9-1.3 19.4 2 .6.4.8 1.2.4 1.8-.4.7-1.2.8-1.8.4z"/></svg>
-            Spotify <span class="soon">Jun 19</span>
+            Spotify <span class="soon" id="spotifyState">Jun 19</span>
           </a>
-          <a href="https://youtube.com/@banthedj" target="_blank" class="social-link" aria-label="YouTube">
+          <a href="https://youtube.com/@banthedj" target="_blank" rel="noreferrer" class="social-link" aria-label="YouTube">
             <!-- YouTube -->
             <svg viewBox="0 0 32 32" fill="currentColor"><path d="M29.4 9.4s-.3-2.1-1.2-3c-1.2-1.2-2.5-1.2-3.1-1.3C21.6 5 16 5 16 5s-5.6 0-9.1.2c-.6.1-1.9.1-3.1 1.3-.9.9-1.2 3-1.2 3S2.3 11.7 2.3 14v2.1c0 2.3.3 4.6.3 4.6s.3 2.1 1.2 3c1.2 1.2 2.7 1.2 3.4 1.3C9.3 25.1 16 25.2 16 25.2s5.6 0 9.1-.2c.6-.1 1.9-.1 3.1-1.3.9-.9 1.2-3 1.2-3s.3-2.3.3-4.6V14c0-2.3-.3-4.6-.3-4.6zM13.2 19.8V11.4l8.4 4.2-8.4 4.2z"/></svg>
             YouTube
           </a>
-          <a href="https://instagram.com/banthedj" target="_blank" class="social-link" aria-label="Instagram">
+          <a href="https://instagram.com/banthedj" target="_blank" rel="noreferrer" class="social-link" aria-label="Instagram">
             <!-- Instagram -->
             <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 2.9c4.4 0 4.9 0 6.6.1 1.6.1 2.5.3 3 .6.8.3 1.3.7 1.9 1.3.6.6 1 1.1 1.3 1.9.2.6.5 1.4.6 3 .1 1.7.1 2.2.1 6.6s0 4.9-.1 6.6c-.1 1.6-.3 2.5-.6 3-.3.8-.7 1.3-1.3 1.9-.6.6-1.1 1-1.9 1.3-.6.2-1.4.5-3 .6-1.7.1-2.2.1-6.6.1s-4.9 0-6.6-.1c-1.6-.1-2.5-.3-3-.6-.8-.3-1.3-.7-1.9-1.3-.6-.6-1-1.1-1.3-1.9-.2-.6-.5-1.4-.6-3C2.9 20.9 2.9 20.4 2.9 16s0-4.9.1-6.6c.1-1.6.3-2.5.6-3 .3-.8.7-1.3 1.3-1.9.6-.6 1.1-1 1.9-1.3.6-.2 1.4-.5 3-.6 1.7-.1 2.2-.1 6.6-.1zm0-2.9c-4.5 0-5 0-6.8.1C7.4.1 6.1.4 5 .9 3.9 1.4 2.9 2 2 2.9 1.1 3.8.5 4.8 0 5.9-.4 7 .1 8.3 0 10.1 0 11.9 0 12.5 0 16c0 3.5 0 4.1.1 5.9.1 1.8.4 3.1.9 4.2.5 1.1 1.1 2.1 2 3 .9.9 1.9 1.5 3 2 1.1.4 2.4.8 4.2.9 1.8.1 2.4.1 5.9.1s4.1 0 5.9-.1c1.8-.1 3.1-.4 4.2-.9 1.1-.5 2.1-1.1 3-2 .9-.9 1.5-1.9 2-3 .4-1.1.8-2.4.9-4.2.1-1.8.1-2.4.1-5.9s0-4.1-.1-5.9c-.1-1.8-.4-3.1-.9-4.2-.5-1.1-1.1-2.1-2-3-.9-.9-1.9-1.5-3-2C22.9.4 21.6.1 19.8 0 18.1 0 17.5 0 16 0zm0 7.8c-4.5 0-8.2 3.7-8.2 8.2s3.7 8.2 8.2 8.2 8.2-3.7 8.2-8.2-3.7-8.2-8.2-8.2zm0 13.5c-2.9 0-5.3-2.4-5.3-5.3s2.4-5.3 5.3-5.3 5.3 2.4 5.3 5.3-2.4 5.3-5.3 5.3zm10.4-13.8c0 1.1-.9 1.9-1.9 1.9-1.1 0-1.9-.9-1.9-1.9 0-1.1.9-1.9 1.9-1.9 1.1 0 1.9.8 1.9 1.9z"/></svg>
             Instagram
           </a>
-          <a href="https://tiktok.com/@banthedj" target="_blank" class="social-link" aria-label="TikTok">
+          <a href="https://tiktok.com/@banthedj" target="_blank" rel="noreferrer" class="social-link" aria-label="TikTok">
             <!-- TikTok -->
             <svg viewBox="0 0 32 32" fill="currentColor"><path d="M27.2 7.2c-1.7-.8-3-2.2-3.7-3.9-.2-.5-.3-1-.4-1.5h-4.6v18.8c0 1.9-1.6 3.5-3.5 3.5s-3.5-1.6-3.5-3.5 1.6-3.5 3.5-3.5c.3 0 .7 0 1 .1V12.5c-.3 0-.7-.1-1-.1C9.5 12.4 5.9 16 5.9 20.5S9.5 28.6 15 28.6s9.1-3.6 9.1-9.1V13.6c1.6 1.1 3.5 1.8 5.5 1.8V11c-1 0-1.9-.7-2.4-3.8z"/></svg>
             TikTok
@@ -101,6 +210,85 @@ const socials = [
       <span>© 2026 BANTHEDJ</span>
       <a href="mailto:banthedj@gmail.com">banthedj@gmail.com</a>
     </footer>
+
+    <script>
+      const releaseSection = document.querySelector('.release');
+      const releaseDate = new Date(releaseSection?.getAttribute('data-release-date') || '');
+      const presaveUrl = releaseSection?.getAttribute('data-presave-url') || '#';
+      const streamUrl = releaseSection?.getAttribute('data-stream-url') || presaveUrl;
+
+      const releaseState = document.getElementById('releaseState');
+      const releaseCopy = document.getElementById('releaseCopy');
+      const releaseButton = document.getElementById('releaseButton');
+      const countdown = document.getElementById('countdown');
+      const spotifyState = document.getElementById('spotifyState');
+      const daysEl = document.getElementById('countDays');
+      const hoursEl = document.getElementById('countHours');
+      const minutesEl = document.getElementById('countMinutes');
+
+      function updateReleaseState() {
+        const now = new Date();
+        const diff = releaseDate.getTime() - now.getTime();
+
+        if (!Number.isFinite(diff) || diff <= 0) {
+          if (releaseState) releaseState.textContent = 'OUT NOW';
+          if (releaseCopy) releaseCopy.innerHTML = 'Available everywhere · <span class="accent">Out now</span>';
+          if (releaseButton) {
+            releaseButton.textContent = 'Stream Overflow ->';
+            releaseButton.setAttribute('href', streamUrl);
+          }
+          if (countdown) countdown.classList.add('is-released');
+          if (spotifyState) spotifyState.textContent = 'Out now';
+          return;
+        }
+
+        const totalMinutes = Math.floor(diff / 60000);
+        const days = Math.floor(totalMinutes / 1440);
+        const hours = Math.floor((totalMinutes % 1440) / 60);
+        const minutes = totalMinutes % 60;
+
+        if (daysEl) daysEl.textContent = String(days).padStart(2, '0');
+        if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
+        if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, '0');
+      }
+
+      updateReleaseState();
+      window.setInterval(updateReleaseState, 30000);
+
+      document.getElementById('printEpk')?.addEventListener('click', () => {
+        window.print();
+      });
+
+      const signalForm = document.getElementById('signalForm');
+      const formStatus = document.getElementById('formStatus');
+
+      signalForm?.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        if (!(signalForm instanceof HTMLFormElement)) return;
+        if (formStatus) formStatus.textContent = 'Sending...';
+
+        const formData = new FormData(signalForm);
+        const payload = Object.fromEntries(formData.entries());
+
+        try {
+          const response = await fetch('/api/subscribe', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          });
+          const result = await response.json().catch(() => ({}));
+
+          if (!response.ok) {
+            throw new Error(result.error || 'Could not join the signal.');
+          }
+
+          signalForm.reset();
+          if (formStatus) formStatus.textContent = 'Signal received.';
+        } catch (error) {
+          if (formStatus) formStatus.textContent = error instanceof Error ? error.message : 'Could not join the signal.';
+        }
+      });
+    </script>
 
   </body>
 </html>

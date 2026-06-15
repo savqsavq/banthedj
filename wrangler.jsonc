@@ -7,6 +7,15 @@
 		"directory": "./dist",
 		"binding": "ASSETS"
 	},
+	// After creating the free D1 database, uncomment and fill this binding.
+	// The API route expects env.DB.
+	// "d1_databases": [
+	// 	{
+	// 		"binding": "DB",
+	// 		"database_name": "banthedj_signals",
+	// 		"database_id": "replace-with-cloudflare-d1-database-id"
+	// 	}
+	// ],
 	"observability": {
 		"enabled": true
 	}

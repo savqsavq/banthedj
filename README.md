@@ -1,43 +1,53 @@
-# Astro Starter Kit: Minimal
+# BANTHEDJ
+
+Astro site for `banthedj.com`, deployed on Cloudflare Workers.
+
+## Local Development
 
 ```sh
-npm create astro@latest -- --template minimal
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Build
 
-## 🚀 Project Structure
+```sh
+npm run build
+```
 
-Inside of your Astro project, you'll see the following folders and files:
+## Free Email Capture Setup
+
+The signup form posts to `/api/subscribe`. It expects a Cloudflare D1 binding named `DB`.
+
+Create the free D1 database:
+
+```sh
+npx wrangler d1 create banthedj_signals
+```
+
+Copy the returned `database_id` into `wrangler.jsonc` by uncommenting the `d1_databases` block.
+
+Apply the schema:
+
+```sh
+npx wrangler d1 migrations apply banthedj_signals --remote
+```
+
+Deploy:
+
+```sh
+npm run deploy
+```
+
+Until the D1 binding is configured, the form UI will load but submissions will return:
 
 ```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+Signal storage is not configured yet.
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Notes
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- The release section automatically switches from countdown/pre-save to `OUT NOW`.
+- The form stores email, interest, optional message, user agent, and a hashed IP.
+- The form includes a hidden honeypot field for basic spam resistance.
+- Turnstile can be added later if spam becomes a real issue.
