@@ -30,6 +30,17 @@ body {
   color: var(--white);
   font-family: var(--font-body);
   overflow-x: hidden;
+  animation: siteReveal 0.9s ease-out both;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: #000;
+  pointer-events: none;
+  z-index: 9999;
+  animation: siteCurtain 1.05s ease forwards;
 }
 
 /* ===========================
@@ -244,7 +255,7 @@ body {
 }
 
 .game-cube {
-  width: 86px;
+  width: 120px;
   margin-top: 18px;
   margin-left: auto;
   margin-right: 8px;
@@ -381,6 +392,32 @@ body {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes siteReveal {
+  from {
+    filter: blur(4px);
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    filter: blur(0);
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes siteCurtain {
+  0% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0.25;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
   }
 }
 
@@ -855,23 +892,23 @@ body {
 .game-section::after {
   content: "";
   position: absolute;
-  right: -180px;
-  top: -120px;
-  width: 520px;
-  height: 520px;
-  border: 2px solid rgba(255,255,255,0.88);
+  right: -420px;
+  top: -360px;
+  width: 1100px;
+  height: 1100px;
+  border: 3px solid rgba(255,255,255,0.92);
   transform: rotate(10deg);
   pointer-events: none;
   opacity: 0.8;
 }
 
 .game-inner {
-  max-width: 1120px;
+  max-width: 1180px;
   margin: 0 auto;
-  padding: 92px 24px 104px;
+  padding: 104px 24px 114px;
   display: grid;
   grid-template-columns: minmax(260px, 0.82fr) minmax(360px, 1fr);
-  gap: 42px;
+  gap: 48px;
   align-items: start;
 }
 
@@ -904,7 +941,7 @@ body {
   background: rgba(0,0,0,0.9);
   box-shadow: 0 0 0 1px rgba(0,64,255,0.2), 0 0 42px rgba(0,64,255,0.08);
   position: relative;
-  max-width: 640px;
+  max-width: 700px;
   justify-self: end;
 }
 
@@ -1202,14 +1239,17 @@ footer a:hover {
     grid-template-columns: 1fr;
   }
   .game-section::after {
-    right: -240px;
-    top: -170px;
-    width: 360px;
-    height: 360px;
+    right: -320px;
+    top: -240px;
+    width: 640px;
+    height: 640px;
   }
   .game-shell {
     max-width: 100%;
     justify-self: stretch;
+  }
+  .game-cube {
+    width: 88px;
   }
   .bauhaus-mark {
     left: 20px;
@@ -1258,7 +1298,8 @@ footer a:hover {
 
   .banner-wrap,
   .hero-player iframe,
-  .embed-wrap {
+  .embed-wrap,
+  body::before {
     display: none;
   }
 
