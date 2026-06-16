@@ -163,6 +163,47 @@ body {
   background: #111;
 }
 
+.hero-player .book-btn {
+  margin-bottom: 10px;
+}
+
+.cta-ornaments {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.cta-wave {
+  width: 112px;
+  height: 22px;
+}
+
+.cta-wave path {
+  fill: none;
+  stroke: var(--blue);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 8 10;
+  animation: waveDrift 3.2s linear infinite;
+}
+
+.cta-cube {
+  width: 28px;
+  height: 28px;
+  transform: rotate(12deg);
+}
+
+.cta-cube path {
+  fill: none;
+  stroke: var(--white);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 .motion-figure {
   position: absolute;
   right: 22px;
@@ -200,6 +241,28 @@ body {
   bottom: 10px;
   width: 72px;
   opacity: 0.75;
+}
+
+.game-cube {
+  width: 86px;
+  margin-top: 18px;
+  margin-left: auto;
+  margin-right: 8px;
+  opacity: 0.88;
+}
+
+.game-cube svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.game-cube path {
+  fill: none;
+  stroke: var(--white);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .motion-figure svg {
@@ -359,6 +422,11 @@ body {
 @keyframes shadowPulse {
   0%, 100% { opacity: 0.16; transform: scaleX(1); }
   50% { opacity: 0.35; transform: scaleX(0.9); }
+}
+
+@keyframes waveDrift {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: 72; }
 }
 
 /* ===========================
@@ -708,16 +776,24 @@ body {
   padding: 0 14px;
 }
 
-.signal-form textarea {
+.signal-prompt {
   grid-column: 1 / -1;
-  min-height: 92px;
-  padding: 14px;
-  resize: vertical;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  border: 1px solid #222;
+  border-radius: 2px;
+  background: rgba(0,0,0,0.58);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 .signal-form input:focus,
-.signal-form select:focus,
-.signal-form textarea:focus {
+.signal-form select:focus {
   border-color: var(--blue);
 }
 
@@ -772,21 +848,36 @@ body {
     var(--black);
   background-size: 28px 28px;
   border-top: 1px solid #111;
+  position: relative;
+  overflow: hidden;
+}
+
+.game-section::after {
+  content: "";
+  position: absolute;
+  right: -180px;
+  top: -120px;
+  width: 520px;
+  height: 520px;
+  border: 2px solid rgba(255,255,255,0.88);
+  transform: rotate(10deg);
+  pointer-events: none;
+  opacity: 0.8;
 }
 
 .game-inner {
-  max-width: 980px;
+  max-width: 1120px;
   margin: 0 auto;
-  padding: 76px 24px 86px;
+  padding: 92px 24px 104px;
   display: grid;
-  grid-template-columns: minmax(220px, 0.72fr) minmax(320px, 1fr);
-  gap: 34px;
+  grid-template-columns: minmax(260px, 0.82fr) minmax(360px, 1fr);
+  gap: 42px;
   align-items: start;
 }
 
 .game-copy h2 {
   font-family: var(--font-display);
-  font-size: clamp(3.4rem, 9vw, 7rem);
+  font-size: clamp(4rem, 9vw, 8rem);
   line-height: 0.92;
   letter-spacing: 0;
 }
@@ -813,6 +904,8 @@ body {
   background: rgba(0,0,0,0.9);
   box-shadow: 0 0 0 1px rgba(0,64,255,0.2), 0 0 42px rgba(0,64,255,0.08);
   position: relative;
+  max-width: 640px;
+  justify-self: end;
 }
 
 .game-shell::before {
@@ -1073,6 +1166,12 @@ footer a:hover {
   .hero-player {
     padding: 14px;
   }
+  .cta-ornaments {
+    margin-top: 10px;
+  }
+  .cta-wave {
+    width: 92px;
+  }
   .motion-figure {
     right: 12px;
     bottom: 10px;
@@ -1101,6 +1200,16 @@ footer a:hover {
   .system-strip,
   .game-inner {
     grid-template-columns: 1fr;
+  }
+  .game-section::after {
+    right: -240px;
+    top: -170px;
+    width: 360px;
+    height: 360px;
+  }
+  .game-shell {
+    max-width: 100%;
+    justify-self: stretch;
   }
   .bauhaus-mark {
     left: 20px;
