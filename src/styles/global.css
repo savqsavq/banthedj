@@ -311,12 +311,14 @@ body {
    =========================== */
 
 .signal,
+.artist-bio,
 .epk {
   background: var(--black);
   border-top: 1px solid #111;
 }
 
 .signal-inner,
+.artist-bio-inner,
 .highlights-inner,
 .notebook-inner,
 .epk-inner {
@@ -392,12 +394,21 @@ body {
 }
 
 .signal-copy,
+.artist-bio p,
 .epk p {
   max-width: 640px;
   margin-top: 14px;
   color: var(--grey);
   font-size: 0.86rem;
   line-height: 1.8;
+}
+
+.artist-bio {
+  background: var(--off-black);
+}
+
+.artist-bio p {
+  color: var(--white);
 }
 
 .bio-block p {
