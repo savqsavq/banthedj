@@ -175,6 +175,33 @@ body {
   filter: drop-shadow(0 0 14px rgba(0, 64, 255, 0.18));
 }
 
+.motion-figure--small {
+  position: relative;
+  right: auto;
+  bottom: auto;
+  width: 108px;
+  margin-top: 18px;
+  opacity: 0.82;
+}
+
+.motion-figure--lean svg {
+  transform: rotate(-8deg);
+}
+
+.motion-figure--perch {
+  justify-self: end;
+  margin-top: 12px;
+  margin-right: 6px;
+}
+
+.motion-figure--float {
+  position: absolute;
+  right: 92px;
+  bottom: 10px;
+  width: 72px;
+  opacity: 0.75;
+}
+
 .motion-figure svg {
   width: 100%;
   height: 100%;
@@ -986,6 +1013,7 @@ body {
    =========================== */
 
 footer {
+  position: relative;
   background: var(--off-black);
   border-top: 1px solid #111;
   padding: 24px;
@@ -1050,6 +1078,14 @@ footer a:hover {
     bottom: 10px;
     width: 92px;
     opacity: 0.72;
+  }
+  .motion-figure--small {
+    width: 84px;
+  }
+  .motion-figure--float {
+    right: 18px;
+    bottom: 8px;
+    width: 56px;
   }
   .release-inner,
   .links-inner,
