@@ -36,11 +36,17 @@ const soundcloudEmbed = 'https://w.soundcloud.com/player/?url=https%3A//soundclo
       </div>
       <div class="hero-epk">
         <div class="hero-copy">
-          <div class="section-kicker">EPK</div>
-          <h1 class="hero-title">BANTHEDJ EPK</h1>
+          <img src="/images/logo_white.jpg" alt="BANTHEDJ logo" class="hero-logo" />
           <p>
-            140 / deep dubstep. Sub-bass-forward pressure, negative space, and clean dirty sound design for club systems.
+            140 / deep dubstep. Sub-bass-forward pressure, negative space, and clean dirty sound design built for club systems.
           </p>
+        </div>
+
+        <div class="bauhaus-mark" aria-hidden="true">
+          <span class="mark-circle"></span>
+          <span class="mark-line"></span>
+          <span class="mark-square"></span>
+          <span class="mark-code">01</span>
         </div>
 
         <div class="hero-player">
@@ -84,58 +90,14 @@ const soundcloudEmbed = 'https://w.soundcloud.com/player/?url=https%3A//soundclo
       </div>
     </section>
 
-    <!-- EPK -->
-    <section class="epk" id="epk">
-      <div class="epk-inner">
-        <div class="section-kicker">BIO</div>
-        <div class="bio-block">
-          <p>
-            By day, a data engineer filtering out noise. By night, banthedj creates physical, sub-bass-forward acoustic environments in the 140/deep dubstep space. Rooted in psychoacoustics and a clean dirty production philosophy, banthedj strips away the excess to deliver heavy, visceral tension designed for the club system. Debut single Overflow out June 19, 2026.
-          </p>
-        </div>
-
-        <div class="press-grid">
-          <figure>
-            <img src="/images/current_press.png" alt="BANTHEDJ current press image" />
-            <figcaption>Current press image</figcaption>
-          </figure>
-          <figure>
-            <img src="/images/artist_photo.jpeg" alt="BANTHEDJ studio artist photo" />
-            <figcaption>Studio photo</figcaption>
-          </figure>
-        </div>
-
-        <div class="epk-panels">
-          <div class="rider-panel">
-            <div class="section-kicker">TECH RIDER</div>
-            <ul>
-              <li>2x Pioneer CDJ-3000s, CDJ-2000NXS2s, or equivalent club media players.</li>
-              <li>1x Pioneer DJM-A9, DJM-900NXS2, or Xone:96 mixer.</li>
-              <li>2x dedicated booth monitors with independent booth volume control.</li>
-              <li>USB-ready setup, stable booth power, and direct stage manager / sound engineer contact.</li>
-            </ul>
-          </div>
-
-          <div class="contact-panel">
-            <div class="section-kicker">BOOKING</div>
-            <a href="mailto:banthedj@gmail.com?subject=Booking%20BANTHEDJ" class="book-btn">Book banthedj</a>
-            <a href="/images/current_press.png" target="_blank" rel="noreferrer" class="secondary-link">Open current press image</a>
-            <a href="/images/artist_photo.jpeg" target="_blank" rel="noreferrer" class="secondary-link">Open studio photo</a>
-            <button type="button" class="secondary-link print-button" id="printEpk">Download / print EPK as PDF</button>
-            <p>High-res press ZIP and logo pack are in progress.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- SIGNAL -->
     <section class="signal" id="signal">
-      <div class="signal-inner">
-        <div class="section-kicker">PRIVATE LIST</div>
-        <h2>JOIN THE SIGNAL</h2>
-        <p class="signal-copy">
-          Unreleased presets, production notes, early drops, and occasional transmissions from BANTHEDJ.
-        </p>
+        <div class="signal-inner">
+          <div class="section-kicker">PRIVATE LIST</div>
+          <h2>JOIN THE SIGNAL</h2>
+          <p class="signal-copy">
+            Unreleased presets, production notes, early drops, and occasional transmissions from BANTHEDJ.
+          </p>
 
         <form class="signal-form" id="signalForm" data-endpoint="">
           <label class="visually-hidden" for="email">Email</label>
@@ -161,13 +123,65 @@ const soundcloudEmbed = 'https://w.soundcloud.com/player/?url=https%3A//soundclo
       </div>
     </section>
 
+    <!-- HIGHLIGHTS -->
+    <section class="highlights">
+      <div class="highlights-inner">
+        <div class="section-kicker">HIGHLIGHTS</div>
+        <div class="highlight-grid">
+          <article class="highlight-item">
+            <span class="highlight-label">Current focus</span>
+            <strong>Overflow</strong>
+            <p>Debut single campaign anchored around 140 / deep dubstep and sub-bass pressure.</p>
+          </article>
+          <article class="highlight-item">
+            <span class="highlight-label">Channels</span>
+            <strong>Active everywhere</strong>
+            <p>Mixcloud, SoundCloud, YouTube, Instagram, and TikTok all stay in rotation.</p>
+          </article>
+          <article class="highlight-item">
+            <span class="highlight-label">Private access</span>
+            <strong>Available on request</strong>
+            <p>EPK link available upon request. Shared directly with labels, press, and promoters.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <!-- NOTEBOOK -->
     <section class="notebook">
-      <div class="notebook-inner">
+        <div class="notebook-inner">
         <div class="section-kicker">NOTEBOOK</div>
         <p>
           Clean dirty. Controlled damage. Bass music built like a system, then pushed until the edges start talking.
         </p>
+      </div>
+    </section>
+
+    <!-- GAME -->
+    <section class="game-section" id="game">
+      <div class="game-inner">
+        <div class="game-copy">
+          <div class="section-kicker">SYSTEM GAME</div>
+          <h2>WANT TO PLAY A GAME?</h2>
+          <p>
+            A small loop about rebuilding the track. Failures reset the grid, but each reset unlocks another layer.
+          </p>
+        </div>
+
+        <div class="game-shell">
+          <div class="game-topline">
+            <span id="gameStatus">signal idle</span>
+            <span>LAYERS <strong id="gameScore">0</strong></span>
+          </div>
+          <canvas id="noiseGame" width="520" height="360" aria-label="Filter the Noise game"></canvas>
+          <div class="game-controls">
+            <button type="button" data-move="left" aria-label="Move left">←</button>
+            <button type="button" data-move="up" aria-label="Move up">↑</button>
+            <button type="button" data-move="down" aria-label="Move down">↓</button>
+            <button type="button" data-move="right" aria-label="Move right">→</button>
+            <button type="button" id="gameReset">reset</button>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -180,6 +194,10 @@ const soundcloudEmbed = 'https://w.soundcloud.com/player/?url=https%3A//soundclo
             <!-- SoundCloud -->
             <svg viewBox="0 0 32 32" fill="currentColor"><path d="M1.4 19.3c0 2.1 1.7 3.7 3.7 3.7s3.7-1.7 3.7-3.7V12c-.9-.5-1.9-.8-3-.8-2.7 0-4.9 2-5.3 4.6-.1.5-.1.9-.1.8 0 .9 0 1.8.5 2.7zm6.8 0V12c.8.3 1.5.8 2.1 1.5v5.8h-2.1zm3.7 0V14c.5.9.8 1.9.8 3v2.3h-.8zm2.4 0v-2.3c0-3.7 3-6.7 6.7-6.7 1 0 2 .2 2.9.6V23h-16v-.7h6.4zm10.3-8.8c-.4-.1-.8-.2-1.2-.2-3.3 0-6 2.7-6 6v2.3h8.2V12c-.3-.2-.7-.3-1-.5z"/></svg>
             SoundCloud
+          </a>
+          <a href="https://www.mixcloud.com/banthedj/" target="_blank" rel="noreferrer" class="social-link" aria-label="Mixcloud">
+            <svg viewBox="0 0 32 32" fill="currentColor"><path d="M4 12h2v8H4v-8zm4 0h2v8H8v-8zm4 0h2v8h-2v-8zm4 0h2v8h-2v-8zm4-2h2v12h-2V10zm4 4h2v8h-2v-8zm4-2h2v12h-2V12z"/></svg>
+            Mixcloud
           </a>
           <a href="https://open.spotify.com/artist/3uiGjuOe1pf7gEXg27Ndqw" target="_blank" rel="noreferrer" class="social-link" aria-label="Spotify">
             <!-- Spotify -->
@@ -208,7 +226,7 @@ const soundcloudEmbed = 'https://w.soundcloud.com/player/?url=https%3A//soundclo
     <!-- FOOTER -->
     <footer>
       <span>© 2026 BANTHEDJ</span>
-      <a href="mailto:banthedj@gmail.com">banthedj@gmail.com</a>
+      <a href="mailto:banthedj@gmail.com?subject=Management%20/%20Label%20Inquiry">Management / Label Inquiries: banthedj@gmail.com</a>
     </footer>
 
     <script>
@@ -294,6 +312,204 @@ const soundcloudEmbed = 'https://w.soundcloud.com/player/?url=https%3A//soundclo
           if (formStatus) formStatus.textContent = error instanceof Error ? error.message : 'Could not join the signal.';
         }
       });
+
+      const canvas = document.getElementById('noiseGame');
+      const scoreEl = document.getElementById('gameScore');
+      const statusEl = document.getElementById('gameStatus');
+      const resetButton = document.getElementById('gameReset');
+      const moveButtons = document.querySelectorAll('[data-move]');
+
+      if (canvas instanceof HTMLCanvasElement) {
+        const ctx = canvas.getContext('2d');
+        const grid = { cols: 13, rows: 9, size: 40 };
+        const blue = '#0040ff';
+        const state = {
+          player: { x: 1, y: 4 },
+          score: 0,
+          attempts: 0,
+          samples: [],
+          noise: [],
+          tick: 0,
+          message: 'signal armed',
+        };
+
+        function cellKey(cell) {
+          return `${cell.x}:${cell.y}`;
+        }
+
+        function randomCell(occupied) {
+          let cell;
+          do {
+            cell = {
+              x: Math.floor(Math.random() * grid.cols),
+              y: Math.floor(Math.random() * grid.rows),
+            };
+          } while (occupied.has(cellKey(cell)));
+          occupied.add(cellKey(cell));
+          return cell;
+        }
+
+        function seedGame() {
+          state.player = { x: 1, y: 4 };
+          state.score = 0;
+          state.tick = 0;
+          state.samples = [];
+          state.noise = [];
+          const occupied = new Set([cellKey(state.player)]);
+          for (let i = 0; i < 7; i += 1) state.samples.push(randomCell(occupied));
+          for (let i = 0; i < 10; i += 1) state.noise.push(randomCell(occupied));
+          setGameMessage(`attempt ${state.attempts + 1}: rebuild`);
+          drawGame();
+        }
+
+        function resetAfterFailure() {
+          state.attempts += 1;
+          state.score += 1;
+          state.player = { x: 1, y: 4 };
+          state.tick = 0;
+          state.samples = [];
+          state.noise = [];
+          const occupied = new Set([cellKey(state.player)]);
+          for (let i = 0; i < 7; i += 1) state.samples.push(randomCell(occupied));
+          for (let i = 0; i < 8 + Math.min(state.attempts, 5); i += 1) state.noise.push(randomCell(occupied));
+          setGameMessage(`failure unlocked layer ${state.score}`);
+          drawGame();
+        }
+
+        function setGameMessage(message) {
+          state.message = message;
+          if (statusEl) statusEl.textContent = message;
+          if (scoreEl) scoreEl.textContent = String(state.score);
+        }
+
+        function drawGame() {
+          if (!ctx) return;
+          const width = canvas.width;
+          const height = canvas.height;
+          ctx.clearRect(0, 0, width, height);
+          ctx.fillStyle = '#000';
+          ctx.fillRect(0, 0, width, height);
+
+          ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+          ctx.lineWidth = 1;
+          for (let x = 0; x <= grid.cols; x += 1) {
+            ctx.beginPath();
+            ctx.moveTo(x * grid.size, 0);
+            ctx.lineTo(x * grid.size, height);
+            ctx.stroke();
+          }
+          for (let y = 0; y <= grid.rows; y += 1) {
+            ctx.beginPath();
+            ctx.moveTo(0, y * grid.size);
+            ctx.lineTo(width, y * grid.size);
+            ctx.stroke();
+          }
+
+          state.samples.forEach((sample, index) => {
+            const cx = sample.x * grid.size + grid.size / 2;
+            const cy = sample.y * grid.size + grid.size / 2;
+            ctx.strokeStyle = blue;
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.arc(cx, cy, 9 + Math.sin(state.tick / 8) * 2, 0, Math.PI * 2);
+            ctx.stroke();
+            ctx.fillStyle = 'rgba(0,64,255,0.22)';
+            ctx.fillRect(sample.x * grid.size + 13, sample.y * grid.size + 13, 14, 14);
+            ctx.fillStyle = 'rgba(255,255,255,0.65)';
+            ctx.font = '9px Space Mono, monospace';
+            ctx.fillText(String((index + state.attempts) % 8), sample.x * grid.size + 4, sample.y * grid.size + 12);
+          });
+
+          state.noise.forEach((noise, index) => {
+            const x = noise.x * grid.size;
+            const y = noise.y * grid.size;
+            ctx.strokeStyle = index % 2 ? 'rgba(255,255,255,0.42)' : 'rgba(255,255,255,0.24)';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(x + 12, y + 12);
+            ctx.lineTo(x + 28, y + 28);
+            ctx.moveTo(x + 28, y + 12);
+            ctx.lineTo(x + 12, y + 28);
+            ctx.stroke();
+          });
+
+          const px = state.player.x * grid.size;
+          const py = state.player.y * grid.size;
+          ctx.fillStyle = blue;
+          ctx.fillRect(px + 9, py + 9, 22, 22);
+          ctx.strokeStyle = '#fff';
+          ctx.lineWidth = 2;
+          ctx.strokeRect(px + 9, py + 9, 22, 22);
+
+          ctx.fillStyle = 'rgba(255,255,255,0.55)';
+          ctx.font = '10px Space Mono, monospace';
+          ctx.fillText(`ATTEMPT ${state.attempts + 1} // FAILURE BUILDS THE PATCH`, 12, height - 14);
+        }
+
+        function movePlayer(direction) {
+          const next = { ...state.player };
+          if (direction === 'left') next.x -= 1;
+          if (direction === 'right') next.x += 1;
+          if (direction === 'up') next.y -= 1;
+          if (direction === 'down') next.y += 1;
+
+          if (next.x < 0 || next.x >= grid.cols || next.y < 0 || next.y >= grid.rows) {
+            setGameMessage('boundary clipped');
+            return;
+          }
+
+          state.player = next;
+          const playerKey = cellKey(state.player);
+          const noiseHit = state.noise.find((noise) => cellKey(noise) === playerKey);
+          if (noiseHit) {
+            resetAfterFailure();
+            return;
+          }
+
+          const sampleIndex = state.samples.findIndex((sample) => cellKey(sample) === playerKey);
+          if (sampleIndex !== -1) {
+            setGameMessage('detail noticed');
+            const occupied = new Set([playerKey, ...state.noise.map(cellKey), ...state.samples.filter((_, index) => index !== sampleIndex).map(cellKey)]);
+            state.samples[sampleIndex] = randomCell(occupied);
+          }
+
+          if (!noiseHit && sampleIndex === -1) {
+            setGameMessage('push the boulder');
+          }
+          drawGame();
+        }
+
+        window.addEventListener('keydown', (event) => {
+          const keyMap = {
+            ArrowLeft: 'left',
+            ArrowRight: 'right',
+            ArrowUp: 'up',
+            ArrowDown: 'down',
+            a: 'left',
+            d: 'right',
+            w: 'up',
+            s: 'down',
+          };
+          const direction = keyMap[event.key];
+          if (!direction) return;
+          event.preventDefault();
+          movePlayer(direction);
+        });
+
+        moveButtons.forEach((button) => {
+          button.addEventListener('click', () => {
+            if (!(button instanceof HTMLButtonElement)) return;
+            movePlayer(button.dataset.move || '');
+          });
+        });
+
+        resetButton?.addEventListener('click', seedGame);
+        seedGame();
+        window.setInterval(() => {
+          state.tick += 1;
+          drawGame();
+        }, 120);
+      }
     </script>
 
   </body>
