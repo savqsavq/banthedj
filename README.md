@@ -19,13 +19,13 @@ GitHub Actions deploys `dist` to Pages on pushes to `main`.
 
 ## Free Email Capture Setup
 
-GitHub Pages is static, so the signup form cannot store emails by itself. The form is present, but it currently shows:
+GitHub Pages is static, so the signup form posts to a separate Cloudflare Worker + D1 database. The default endpoint is:
 
 ```text
-Signal backend coming soon.
+https://banthedj-signal.savannahksummers.workers.dev/subscribe
 ```
 
-When ready, create a separate free Cloudflare Worker + D1 database and set the form's `data-endpoint` in `src/pages/index.astro` to that Worker URL.
+To override it during a static build, set `PUBLIC_SIGNAL_ENDPOINT`.
 
 Create the D1 database:
 
@@ -33,11 +33,63 @@ Create the D1 database:
 npx wrangler d1 create banthedj_signals
 ```
 
+Copy the returned database ID into `workers/signal/wrangler.toml`.
+
 Apply the schema:
 
 ```sh
-npx wrangler d1 migrations apply banthedj_signals --remote
+npm run db:migrate:signal
 ```
+
+Deploy the Worker:
+
+```sh
+npm run deploy:signal
+```
+
+Optionally connect the Worker to `signal.banthedj.com` in Cloudflare, then rebuild with:
+
+```sh
+PUBLIC_SIGNAL_ENDPOINT=https://signal.banthedj.com/subscribe npm run build
+```
+
+## Viewing Subscribers
+
+The easiest view is the private Worker admin page:
+
+```text
+https://banthedj-signal.savannahksummers.workers.dev/admin?token=YOUR_ADMIN_TOKEN
+```
+
+After the first successful visit, the Worker stores a secure browser cookie, so future visits can use:
+
+```text
+https://banthedj-signal.savannahksummers.workers.dev/admin
+```
+
+The admin page also includes a CSV download.
+
+Set or replace the private token with:
+
+```sh
+npx wrangler secret put ADMIN_TOKEN --config workers/signal/wrangler.toml
+```
+
+## Web Analytics
+
+Cloudflare Web Analytics setup:
+
+1. Open the Cloudflare dashboard and go to Web Analytics.
+2. Select Add a site.
+3. Add `banthedj.com`.
+4. Copy the token from the JavaScript snippet.
+5. Build the site with:
+
+```sh
+PUBLIC_CLOUDFLARE_WEB_ANALYTICS_TOKEN=YOUR_TOKEN npm run build
+```
+
+Cloudflare says the JS snippet goes before the closing body tag and data can take a few minutes to appear.
 
 ## Notes
 

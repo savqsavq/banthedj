@@ -10,7 +10,9 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "deploy": "npm run build"
+    "deploy": "npm run build",
+    "deploy:signal": "npx wrangler deploy --config workers/signal/wrangler.toml",
+    "db:migrate:signal": "npx wrangler d1 migrations apply banthedj_signals --remote --config workers/signal/wrangler.toml"
   },
   "dependencies": {
     "astro": "^6.3.5"

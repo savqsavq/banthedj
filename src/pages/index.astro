@@ -5,6 +5,8 @@ const releaseDateIso = '2026-06-19T00:00:00-05:00';
 const presaveUrl = 'https://distrokid.com/hyperfollow/banthedj/overflow';
 const streamUrl = 'https://distrokid.com/hyperfollow/banthedj/overflow';
 const soundcloudEmbed = 'https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/banthedj/overflow&color=%231f1abc&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false';
+const signalEndpoint = import.meta.env.PUBLIC_SIGNAL_ENDPOINT || 'https://banthedj-signal.savannahksummers.workers.dev/subscribe';
+const cloudflareAnalyticsToken = import.meta.env.PUBLIC_CLOUDFLARE_WEB_ANALYTICS_TOKEN || 'ce06ce76509044c58a21f86aa8bfc8e1';
 ---
 
 <html lang="en">
@@ -150,7 +152,7 @@ const soundcloudEmbed = 'https://w.soundcloud.com/player/?url=https%3A//soundclo
             Serum presets, production notes, early drops, and occasional transmissions from BANTHEDJ.
           </p>
 
-        <form class="signal-form" id="signalForm" data-endpoint="">
+        <form class="signal-form" id="signalForm" data-endpoint={signalEndpoint}>
           <label class="visually-hidden" for="email">Email</label>
           <input id="email" name="email" type="email" placeholder="email address" autocomplete="email" required />
 
@@ -589,6 +591,12 @@ const soundcloudEmbed = 'https://w.soundcloud.com/player/?url=https%3A//soundclo
         }, 120);
       }
     </script>
-
+    {cloudflareAnalyticsToken && (
+      <script
+        defer
+        src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon={JSON.stringify({ token: cloudflareAnalyticsToken })}
+      />
+    )}
   </body>
 </html>

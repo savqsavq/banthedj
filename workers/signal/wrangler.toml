@@ -1,0 +1,12 @@
+name = "banthedj-signal"
+main = "src/index.js"
+compatibility_date = "2026-06-16"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "banthedj_signals"
+database_id = "244360a0-6de4-42d3-a406-a2ed27af3519"
+migrations_dir = "../../migrations"
+
+[vars]
+ALLOWED_ORIGINS = "https://banthedj.com,https://www.banthedj.com,http://localhost:4321,http://127.0.0.1:4321"
