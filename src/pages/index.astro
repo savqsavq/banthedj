@@ -4,7 +4,7 @@ import '../styles/global.css';
 const releaseDateIso = '2026-06-19T00:00:00-05:00';
 const presaveUrl = 'https://distrokid.com/hyperfollow/banthedj/overflow';
 const streamUrl = 'https://distrokid.com/hyperfollow/banthedj/overflow';
-const soundcloudEmbed = 'https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/banthedj/overflow&color=%230040ff&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false';
+const soundcloudEmbed = 'https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/banthedj/overflow&color=%231f1abc&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false';
 ---
 
 <html lang="en">
@@ -27,6 +27,11 @@ const soundcloudEmbed = 'https://w.soundcloud.com/player/?url=https%3A//soundclo
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet" />
   </head>
   <body>
+    <div class="opening-curtain" aria-hidden="true">
+      <span class="curtain curtain-left"></span>
+      <span class="curtain curtain-right"></span>
+      <span class="curtain-rod"></span>
+    </div>
 
     <!-- HERO -->
     <section class="hero" id="top">
@@ -85,10 +90,11 @@ const soundcloudEmbed = 'https://w.soundcloud.com/player/?url=https%3A//soundclo
           <path class="figure-shadow" d="M46 138 C62 132 98 132 118 138"></path>
         </svg>
       </div>
+
     </section>
 
     <!-- RELEASE -->
-    <section class="release" data-release-date={releaseDateIso} data-presave-url={presaveUrl} data-stream-url={streamUrl}>
+    <section class="release" id="release" data-release-date={releaseDateIso} data-presave-url={presaveUrl} data-stream-url={streamUrl}>
       <div class="release-inner">
         <div class="release-label" id="releaseState">NEW SINGLE</div>
         <div class="release-track">OVERFLOW</div>
@@ -155,8 +161,6 @@ const soundcloudEmbed = 'https://w.soundcloud.com/player/?url=https%3A//soundclo
             <option value="production-notes">Production notes</option>
             <option value="shows">Show announcements</option>
           </select>
-
-          <p class="signal-prompt">send a signal</p>
 
           <label class="website-field" for="website">Website</label>
           <input class="website-field" id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
@@ -396,7 +400,7 @@ const soundcloudEmbed = 'https://w.soundcloud.com/player/?url=https%3A//soundclo
       if (canvas instanceof HTMLCanvasElement) {
         const ctx = canvas.getContext('2d');
         const grid = { cols: 13, rows: 9, size: 40 };
-        const blue = '#0040ff';
+        const blue = '#1f1abc';
         const state = {
           player: { x: 1, y: 4 },
           score: 0,

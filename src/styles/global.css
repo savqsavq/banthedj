@@ -7,8 +7,8 @@
 :root {
   --black: #000;
   --off-black: #0a0a0a;
-  --blue: #0040ff;
-  --blue-dim: rgba(0, 64, 255, 0.15);
+  --blue: #1f1abc;
+  --blue-dim: rgba(31, 26, 188, 0.15);
   --white: #fff;
   --grey: #888;
   --font-display: 'Bebas Neue', sans-serif;
@@ -37,10 +37,49 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: #000;
+  background: rgba(0, 0, 0, 0.88);
   pointer-events: none;
+  z-index: 9998;
+  animation: siteVeil 1.2s ease forwards;
+}
+
+.opening-curtain {
+  position: fixed;
+  inset: 0;
   z-index: 9999;
-  animation: siteCurtain 1.05s ease forwards;
+  pointer-events: none;
+}
+
+.curtain {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50.5%;
+  background:
+    linear-gradient(to bottom, rgba(255,255,255,0.05), rgba(255,255,255,0) 14%),
+    linear-gradient(180deg, rgba(24,24,24,1) 0%, rgba(0,0,0,1) 20%, rgba(0,0,0,1) 100%);
+  box-shadow: inset 0 0 60px rgba(255,255,255,0.03);
+}
+
+.curtain-left {
+  left: 0;
+  animation: curtainLeftOpen 1.15s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.curtain-right {
+  right: 0;
+  animation: curtainRightOpen 1.15s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.curtain-rod {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 12px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0.04));
+  box-shadow: 0 1px 0 rgba(255,255,255,0.08);
+  animation: curtainRodFade 1.1s ease forwards;
 }
 
 /* ===========================
@@ -255,7 +294,7 @@ body::before {
 }
 
 .game-cube {
-  width: 120px;
+  width: 160px;
   margin-top: 18px;
   margin-left: auto;
   margin-right: 8px;
@@ -408,7 +447,7 @@ body::before {
   }
 }
 
-@keyframes siteCurtain {
+@keyframes siteVeil {
   0% {
     opacity: 1;
   }
@@ -418,6 +457,46 @@ body::before {
   100% {
     opacity: 0;
     visibility: hidden;
+  }
+}
+
+@keyframes curtainLeftOpen {
+  to {
+    transform: translateX(-101%);
+  }
+}
+
+@keyframes curtainRightOpen {
+  to {
+    transform: translateX(101%);
+  }
+}
+
+@keyframes curtainRodFade {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes cueAppear {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes cueArrow {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(4px);
+    opacity: 1;
   }
 }
 
@@ -892,23 +971,23 @@ body::before {
 .game-section::after {
   content: "";
   position: absolute;
-  right: -420px;
-  top: -360px;
-  width: 1100px;
-  height: 1100px;
-  border: 3px solid rgba(255,255,255,0.92);
+  right: -560px;
+  top: -460px;
+  width: 1500px;
+  height: 1500px;
+  border: 4px solid rgba(255,255,255,0.95);
   transform: rotate(10deg);
   pointer-events: none;
   opacity: 0.8;
 }
 
 .game-inner {
-  max-width: 1180px;
+  max-width: 1220px;
   margin: 0 auto;
-  padding: 104px 24px 114px;
+  padding: 110px 24px 124px;
   display: grid;
   grid-template-columns: minmax(260px, 0.82fr) minmax(360px, 1fr);
-  gap: 48px;
+  gap: 52px;
   align-items: start;
 }
 
@@ -941,7 +1020,7 @@ body::before {
   background: rgba(0,0,0,0.9);
   box-shadow: 0 0 0 1px rgba(0,64,255,0.2), 0 0 42px rgba(0,64,255,0.08);
   position: relative;
-  max-width: 700px;
+  max-width: 720px;
   justify-self: end;
 }
 
@@ -1239,10 +1318,10 @@ footer a:hover {
     grid-template-columns: 1fr;
   }
   .game-section::after {
-    right: -320px;
-    top: -240px;
-    width: 640px;
-    height: 640px;
+    right: -380px;
+    top: -300px;
+    width: 900px;
+    height: 900px;
   }
   .game-shell {
     max-width: 100%;
@@ -1299,7 +1378,8 @@ footer a:hover {
   .banner-wrap,
   .hero-player iframe,
   .embed-wrap,
-  body::before {
+  body::before,
+  .opening-curtain {
     display: none;
   }
 
