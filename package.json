@@ -8,16 +8,21 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
+    "preview": "npm run build && wrangler dev",
     "astro": "astro",
-    "deploy": "npm run build",
+    "deploy": "npm run build && wrangler deploy",
     "deploy:signal": "npx wrangler deploy --config workers/signal/wrangler.toml",
-    "db:migrate:signal": "npx wrangler d1 migrations apply banthedj_signals --remote --config workers/signal/wrangler.toml"
+    "db:migrate:signal": "npx wrangler d1 migrations apply banthedj_signals --remote --config workers/signal/wrangler.toml",
+    "generate-types": "wrangler types"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^13.7.0",
     "astro": "^6.3.5"
   },
   "overrides": {
     "vite": "^7"
+  },
+  "devDependencies": {
+    "wrangler": "^4.103.0"
   }
 }
