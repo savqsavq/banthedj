@@ -106,7 +106,16 @@ const cloudflareAnalyticsToken = import.meta.env.PUBLIC_CLOUDFLARE_WEB_ANALYTICS
           <span><strong id="countHours">--</strong> hours</span>
           <span><strong id="countMinutes">--</strong> min</span>
         </div>
-        <a href={presaveUrl} target="_blank" rel="noreferrer" class="hyperfollow-btn" id="releaseButton">Pre-save Overflow -></a>
+        <div class="stream-links">
+          <a href="https://open.spotify.com/album/5ZT1j2JNRNGTmQkQyT8THf" target="_blank" rel="noreferrer" class="stream-link">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.65 14.4c-.2.3-.61.4-.91.2-2.49-1.52-5.63-1.86-9.32-1.02-.36.08-.71-.14-.79-.5-.08-.36.14-.71.5-.79 4.04-.92 7.51-.53 10.31 1.18.3.18.4.6.21.93zm1.24-2.76c-.24.38-.76.5-1.14.26-2.85-1.75-7.19-2.26-10.56-1.24-.44.13-.9-.12-1.03-.56-.13-.44.12-.9.56-1.03 3.85-1.17 8.63-.6 11.91 1.43.38.23.5.76.26 1.14zm.11-2.87C14.25 8.9 8.5 8.7 5.14 9.7c-.52.16-1.07-.14-1.23-.66-.16-.52.14-1.07.66-1.23 3.87-1.17 10.31-.95 14.38 1.43.46.27.61.86.34 1.32-.27.46-.87.61-1.33.21z"/></svg>
+            Spotify
+          </a>
+          <a href="https://music.apple.com/us/album/overflow/6771061988?i=6771061989" target="_blank" rel="noreferrer" class="stream-link">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98l-.09.06c-.22.15-2.18 1.27-2.16 3.8.03 3.02 2.65 4.03 2.68 4.04l-.07.28zM13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            Apple Music
+          </a>
+        </div>
       </div>
     </section>
 
@@ -127,7 +136,7 @@ const cloudflareAnalyticsToken = import.meta.env.PUBLIC_CLOUDFLARE_WEB_ANALYTICS
               allowfullscreen>
             </iframe>
           </div>
-          <img class="video-frame-img" src="/images/embed_frame.png" aria-hidden="true" />
+          <img class="video-frame-img" src="/images/blue_embed_frame.png" aria-hidden="true" />
         </div>
         <div class="embed-wrap">
           <iframe
@@ -339,7 +348,6 @@ const cloudflareAnalyticsToken = import.meta.env.PUBLIC_CLOUDFLARE_WEB_ANALYTICS
 
       const releaseState = document.getElementById('releaseState');
       const releaseCopy = document.getElementById('releaseCopy');
-      const releaseButton = document.getElementById('releaseButton');
       const countdown = document.getElementById('countdown');
       const spotifyState = document.getElementById('spotifyState');
       const daysEl = document.getElementById('countDays');
@@ -353,10 +361,6 @@ const cloudflareAnalyticsToken = import.meta.env.PUBLIC_CLOUDFLARE_WEB_ANALYTICS
         if (!Number.isFinite(diff) || diff <= 0) {
           if (releaseState) releaseState.textContent = 'OUT NOW';
           if (releaseCopy) releaseCopy.innerHTML = 'Available everywhere · <span class="accent">Out now</span>';
-          if (releaseButton) {
-            releaseButton.textContent = 'Stream Overflow ->';
-            releaseButton.setAttribute('href', streamUrl);
-          }
           if (countdown) countdown.classList.add('is-released');
           if (spotifyState) spotifyState.textContent = 'Out now';
           return;
